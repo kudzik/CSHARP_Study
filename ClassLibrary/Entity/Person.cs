@@ -18,6 +18,7 @@ namespace ClassLibrary.Entity
         public string? City { get; set; }
         public string? Country { get; set; }
         public string? CountryCode { get; set; }
+        public int NameLength { get; set; }
 
         public override string ToString()
         {
@@ -35,6 +36,7 @@ namespace ClassLibrary.Entity
             return sb.ToString();
         }
     }
+
 
 }
 

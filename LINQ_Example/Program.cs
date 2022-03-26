@@ -1,9 +1,11 @@
-﻿using ClassLibrary.ViewModel;
+﻿using System.Runtime.CompilerServices;
+using ClassLibrary.Repository;
+using ClassLibrary.ViewModel;
 
 PersonViewModel pvm = new PersonViewModel();
 
 // decyzja o użyciu składni SQL lub funkcji
-pvm.SqlSyntax = false;
+pvm.SqlSyntax = true;
 
 
 
@@ -32,12 +34,34 @@ pvm.SqlSyntax = false;
 // pvm.OrderByTwoFields();
 
 // Pobieranie i filtrowanie danych za pomocą Where
-pvm.WhereExpression();
+// pvm.WhereExpression();
+// pvm.WhereExpressionMoreCondition();
 
+// własna metoda rozszeżająca LINQ
+// pvm.PersonLinqHelperByCountryCode();
+
+// Pobieranie wyników
+// Jeśli nie znajdzie żadnego rekordu zostanie rzucony wyjątek  InvalidOperationException, jeśli znajdzie wiele wyników zwróci pierwszy.
+// pvm.First();
+
+// Jeśli nie znajdzie żadnego rekordu zostanie zwrócone null, jeśli znajdzie wiele wyników zwróci pierwszy.
+// pvm.FirstOrDefault();
+
+// Ostatni element lub wyjątek
+//pvm.Last();
+
+// Ostatni element lub null
+//pvm.LastOrDefault();
+
+// Single lub SingleOrDefault stosujemy wtedy gdy spodziewamy się tylko jednego elementu np. Id rekordu w bazie danych
+// pvm.ForEachOperation();
+
+var res = UserRepository.GetAllUser();
+Console.WriteLine();
 // wyświeltenie wyników
-foreach (var item in pvm.Persons)
-{
-    Console.WriteLine(item.ToString());
-}
+//foreach (var item in pvm.Persons)
+//{
+//    Console.WriteLine(item.ToString());
+//}
 
 
