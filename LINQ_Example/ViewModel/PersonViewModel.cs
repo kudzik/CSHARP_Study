@@ -9,9 +9,9 @@ namespace ClassLibrary.ViewModel;
 
 public class PersonViewModel
 {
-    public List<Person>? Persons { get; set; }
-    public bool SqlSyntax { get; set; }
-    public string? TextResult { get; set; }
+    public List<Person>? Persons { get; private set; }
+    public string TextResult { get; private set; }
+    public bool SqlSyntax { get; private set; }
 
     // Pobieranie wszystkich rekordów i dodanie ich do listy
     public void GetAllAndAddToList()
@@ -95,84 +95,6 @@ public class PersonViewModel
             }
         }
     }
-
-    public void OrderByOne()
-    {
-        if (SqlSyntax)
-        {
-            Persons = (from person in Persons orderby person.FirstName select person).ToList();
-        }
-        else
-        {
-            Persons = Persons.Select(person => person).OrderBy(person => person.FirstName).ToList();
-        }
-    }
-
-    public void OrderByDescending()
-    {
-        if (SqlSyntax)
-        {
-            Persons = (from person in Persons orderby person.FirstName descending select person).ToList();
-        }
-        else
-        {
-            Persons = Persons.Select(person => person).OrderByDescending(person => person.FirstName).ToList();
-        }
-    }
-
-    public void OrderByTwoFields()
-    {
-        if (SqlSyntax)
-        {
-            Persons = (from person in Persons orderby person.FirstName, person.LastName select person).ToList();
-        }
-        else
-        {
-            Persons = Persons.Select(person => person).OrderBy(person => person.FirstName)
-                .ThenBy(person => person.LastName).ToList();
-        }
-    }
-
-    public void WhereExpression()
-    {
-        if (SqlSyntax)
-        {
-            Persons = (from person in Persons where person.CountryCode == "PL" select person).ToList();
-        }
-        else
-        {
-            Persons = Persons.Where(person => person.CountryCode == "PL").Select(person => person).ToList();
-        }
-    }
-
-    public void WhereExpressionMoreCondition()
-    {
-        if (SqlSyntax)
-        {
-            Persons = (from person in Persons where person.CountryCode == "PL" && person.Email.EndsWith("pl") select person).ToList();
-        }
-        else
-        {
-            Persons = Persons.Where(person => person.CountryCode == "PL" && person.Email.EndsWith("pl")).Select(person => person).ToList();
-        }
-    }
-
-    public void PersonLinqHelperByCountryCode()
-    {
-
-        // własne rozszeżenie LINQ `ByCountryCode`
-
-        if (SqlSyntax)
-        {
-            Persons = (from person in Persons select person).ByCountryCode("PL").ToList();
-
-        }
-        else
-        {
-            Persons = Persons.Select(person => person).ByCountryCode("CN").ToList();
-        }
-    }
-
 
     public void First()
     {
@@ -262,7 +184,7 @@ public class PersonViewModel
         }
         else
         {
-            Persons.ForEach(person => person.NameLength = person.FirstName.Length);
+           Persons.ForEach(person => person.NameLength = person.FirstName.Length);
         }
 
         foreach (var item in Persons)

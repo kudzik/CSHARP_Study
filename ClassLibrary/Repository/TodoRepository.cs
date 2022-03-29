@@ -12,7 +12,7 @@ namespace ClassLibrary.Repository
     {
         private static string path = @"C:\Users\kudzi\source\repos\CSharp_Study\ClassLibrary\Repository\Todos.json";
 
-        public static List<Todo>? GetAllTodo()
+        public  List<Todo> GetAllTodo()
         {
             if (File.Exists(path))
             {

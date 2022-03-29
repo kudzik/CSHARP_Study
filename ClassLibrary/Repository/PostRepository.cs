@@ -12,7 +12,7 @@ namespace ClassLibrary.Repository
     {
         private static string path = @"C:\Users\kudzi\source\repos\CSharp_Study\ClassLibrary\Repository\Posts.json";
 
-        public static List<Post>? GetAllPost()
+        public  List<Post> GetAllPost()
         {
             if (File.Exists(path))
             {

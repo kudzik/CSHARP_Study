@@ -1,10 +1,6 @@
 ﻿using ClassLibrary.Entity;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ClassLibrary.Repository
 {
@@ -12,7 +8,7 @@ namespace ClassLibrary.Repository
     {
         private static string path = @"C:\Users\kudzi\source\repos\CSharp_Study\ClassLibrary\Repository\Users.json";
 
-        public static List<User>? GetAllUser()
+        public List<User> GetAll()
         {
             if (File.Exists(path))
             {

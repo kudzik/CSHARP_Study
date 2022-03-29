@@ -9,7 +9,7 @@ namespace ClassLibrary.Repository
         private static string path = @"C:\Users\kudzi\source\repos\CSharp_Study\ClassLibrary\Repository\Persons.json";
 
 
-        public static List<Person>? GetAllPerson()
+        public List<Person>? GetAllPerson()
         {
             if (File.Exists(path))
             {
